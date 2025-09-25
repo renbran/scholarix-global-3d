@@ -1,4 +1,4 @@
-# Scholarix Global Education Community - Enhanced Visual Identity
+# Scholarix Study Abroad Education Community - Enhanced Visual Identity
 
 ## Core Purpose & Success
 - **Mission Statement**: Create a warm, professional educational community platform that guides students through their international academic journey with human-centered support and visual storytelling.

@@ -61,7 +61,7 @@ const HeroSection = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}
       >
-        Scholarix Global
+        Scholarix Study Abroad
         <br />
         <span className="text-gradient">Education Community</span>
       </motion.h1>
@@ -529,7 +529,7 @@ const Navigation = () => {
               <GraduationCap size={24} className="text-primary-foreground" weight="bold" />
             </div>
             <div className="text-xl font-bold academic-heading text-foreground">
-              Scholarix Global
+              Scholarix Study Abroad
             </div>
           </div>
           
@@ -608,7 +608,7 @@ const Footer = () => (
               <GraduationCap size={24} className="text-primary-foreground" weight="bold" />
             </div>
             <div className="text-xl font-bold academic-heading text-foreground">
-              Scholarix Global
+              Scholarix Study Abroad
             </div>
           </div>
           <p className="text-muted-foreground mb-4 max-w-md">
@@ -643,7 +643,7 @@ const Footer = () => (
       
       <div className="pt-8 border-t border-border text-center">
         <p className="text-sm text-muted-foreground">
-          © 2024 Scholarix Global Education Community. All rights reserved.
+          © 2024 Scholarix Study Abroad Education Community. All rights reserved.
         </p>
       </div>
     </div>
