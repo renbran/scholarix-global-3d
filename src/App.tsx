@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Globe, GraduationCap, Users, Calendar, CheckCircle, ArrowRight, List, X, BookOpen, Trophy, Heart, Star } from '@phosphor-icons/react'
+import { Globe, GraduationCap, Users, Calendar, CheckCircle, ArrowRight, List, X, BookOpen, Trophy, Heart, Star, Phone, Download } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -20,7 +20,15 @@ const FloatingElement = ({ children, delay = 0, className = "" }) => (
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-    <div className="aurora-glow absolute inset-0 opacity-30" />
+    {/* Background image with overlay */}
+    <div 
+      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: 'url(https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)'
+      }}
+    />
+    <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" />
+    <div className="aurora-glow absolute inset-0 opacity-20" />
     
     {/* Academic institution background pattern */}
     <div className="absolute inset-0 opacity-5">
@@ -69,17 +77,31 @@ const HeroSection = () => (
       </motion.p>
 
       <motion.div
-        className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+        className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.9 }}
       >
-        <Button size="lg" className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground px-8">
+        <Button size="lg" className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold shadow-lg">
           Join Our Community
-          <ArrowRight size={20} className="ml-2" />
+          <ArrowRight size={24} className="ml-2" />
         </Button>
-        <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5 px-8">
-          Explore Programs
+        <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg font-semibold transition-all duration-300">
+          <Phone size={20} className="mr-2" />
+          Book Free Consultation
+        </Button>
+      </motion.div>
+
+      {/* Additional CTA for lead generation */}
+      <motion.div
+        className="mb-12"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.1 }}
+      >
+        <Button variant="ghost" className="text-primary hover:text-primary/80 hover:bg-primary/5 px-6 py-2">
+          <Download size={18} className="mr-2" />
+          Download Free Study Abroad Guide
         </Button>
       </motion.div>
 
@@ -121,25 +143,36 @@ const HeroSection = () => (
   </section>
 )
 
-const ServiceCard = ({ icon: Icon, title, description, features, delay = 0 }) => (
+const ServiceCard = ({ icon: Icon, title, description, features, delay = 0, imageUrl }) => (
   <motion.div
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
     viewport={{ once: true }}
   >
-    <Card className="card-hover bg-card/95 backdrop-blur-sm border-border/50 h-full">
-      <CardHeader>
-        <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
-          <Icon size={32} className="text-primary" weight="duotone" />
+    <Card className="card-hover bg-card/95 backdrop-blur-sm border-border/50 h-full overflow-hidden">
+      {/* Professional image header */}
+      <div className="h-48 relative overflow-hidden">
+        <div 
+          className="w-full h-full bg-cover bg-center"
+          style={{ backgroundImage: `url(${imageUrl})` }}
+        />
+        <div className="absolute inset-0 bg-primary/10 backdrop-blur-[1px]" />
+        <div className="absolute bottom-4 left-4">
+          <div className="w-12 h-12 bg-primary/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+            <Icon size={24} className="text-primary-foreground" weight="duotone" />
+          </div>
         </div>
-        <CardTitle className="text-2xl text-card-foreground">{title}</CardTitle>
+      </div>
+      
+      <CardHeader>
+        <CardTitle className="text-xl text-card-foreground">{title}</CardTitle>
         <CardDescription className="text-muted-foreground">
           {description}
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="space-y-2">
+        <div className="space-y-2 mb-6">
           {features.map((feature, index) => (
             <div key={index} className="flex items-center gap-2">
               <CheckCircle size={16} className="text-primary flex-shrink-0" />
@@ -147,6 +180,10 @@ const ServiceCard = ({ icon: Icon, title, description, features, delay = 0 }) =>
             </div>
           ))}
         </div>
+        <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+          Learn More
+          <ArrowRight size={16} className="ml-2" />
+        </Button>
       </CardContent>
     </Card>
   </motion.div>
@@ -158,6 +195,7 @@ const ServicesSection = () => {
       icon: BookOpen,
       title: "Academic Pathway Planning",
       description: "Personalized education roadmaps designed by our experienced academic counselors",
+      imageUrl: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       features: [
         "1-on-1 academic consultation",
         "University & program matching", 
@@ -169,6 +207,7 @@ const ServicesSection = () => {
       icon: Users,
       title: "Student Community Support",
       description: "Join our vibrant community of current students, alumni, and mentors worldwide",
+      imageUrl: "https://images.unsplash.com/photo-1529390079861-591de354faf5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       features: [
         "Peer mentorship program",
         "Alumni network access",
@@ -180,6 +219,7 @@ const ServicesSection = () => {
       icon: Trophy,
       title: "Success Coaching Program",
       description: "Comprehensive coaching to ensure your academic and professional success",
+      imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       features: [
         "Interview & presentation skills",
         "Scholarship application guidance",
@@ -211,11 +251,36 @@ const ServicesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} delay={index * 0.2} />
           ))}
         </div>
+
+        {/* Call to action section */}
+        <motion.div
+          className="text-center bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-border/50"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-2xl font-bold academic-heading text-foreground mb-4">
+            Ready to Start Your Journey?
+          </h3>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Take the first step toward your international education goals. Our expert counselors are here to guide you every step of the way.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3">
+              <Phone size={20} className="mr-2" />
+              Schedule Free Consultation
+            </Button>
+            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3">
+              Join Community Today
+            </Button>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
@@ -247,29 +312,43 @@ const TimelineSection = () => {
   const steps = [
     {
       title: "Welcome & Orientation",
-      description: "Join our community with a comprehensive orientation session and goal-setting workshop"
+      description: "Join our community with a comprehensive orientation session and goal-setting workshop",
+      imageUrl: "https://images.unsplash.com/photo-1559521783-1d1599583485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
     },
     {
       title: "Academic Assessment", 
-      description: "Work with our counselors to evaluate your academic background and career aspirations"
+      description: "Work with our counselors to evaluate your academic background and career aspirations",
+      imageUrl: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
     },
     {
       title: "Community Matching",
-      description: "Connect with mentors, study groups, and university programs that align with your goals"
+      description: "Connect with mentors, study groups, and university programs that align with your goals",
+      imageUrl: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
     },
     {
       title: "Application Journey",
-      description: "Navigate the application process with ongoing support from our community and experts"
+      description: "Navigate the application process with ongoing support from our community and experts",
+      imageUrl: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
     },
     {
       title: "Success & Beyond",
-      description: "Celebrate achievements and continue growing within our global alumni network"
+      description: "Celebrate achievements and continue growing within our global alumni network",
+      imageUrl: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
     }
   ]
 
   return (
-    <section className="py-20 px-6 bg-background">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-20 px-6 bg-background relative overflow-hidden">
+      {/* Background pattern */}
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)'
+        }}
+      />
+      <div className="absolute inset-0 bg-background/95" />
+      
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -288,16 +367,55 @@ const TimelineSection = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, index) => (
-            <TimelineStep 
+            <motion.div
               key={index}
-              number={index + 1}
-              {...step}
-              delay={index * 0.1}
-            />
+              className="relative group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="card-hover h-full overflow-hidden">
+                {/* Image header */}
+                <div className="h-32 relative overflow-hidden">
+                  <div 
+                    className="w-full h-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+                    style={{ backgroundImage: `url(${step.imageUrl})` }}
+                  />
+                  <div className="absolute inset-0 bg-primary/20" />
+                  <div className="absolute top-4 left-4">
+                    <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
+                      {index + 1}
+                    </div>
+                  </div>
+                </div>
+                
+                <CardHeader>
+                  <CardTitle className="text-lg text-card-foreground">{step.title}</CardTitle>
+                  <CardDescription className="text-muted-foreground text-sm">
+                    {step.description}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </motion.div>
           ))}
         </div>
+
+        {/* CTA at bottom of timeline */}
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <Button size="lg" className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3">
+            Start Your Journey Today
+            <ArrowRight size={20} className="ml-2" />
+          </Button>
+        </motion.div>
       </div>
     </section>
   )
@@ -312,8 +430,16 @@ const StatsSection = () => {
   ]
 
   return (
-    <section className="py-20 px-6 bg-primary/5">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-6 bg-primary/5 relative overflow-hidden">
+      {/* Professional background */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-10"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)'
+        }}
+      />
+      
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -332,7 +458,7 @@ const StatsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -359,6 +485,32 @@ const StatsSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Final CTA */}
+        <motion.div
+          className="text-center bg-card/90 backdrop-blur-sm rounded-2xl p-8 border border-border/50 shadow-lg"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-2xl font-bold academic-heading text-foreground mb-4">
+            Join Thousands of Successful Students
+          </h3>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Don't just dream about studying abroad – make it happen with the support of our proven community and expert guidance.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold shadow-lg">
+              <Users size={20} className="mr-2" />
+              Join Our Community
+            </Button>
+            <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg font-semibold">
+              <Download size={20} className="mr-2" />
+              Get Free Guide
+            </Button>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
@@ -393,7 +545,7 @@ const Navigation = () => {
             <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
               About
             </a>
-            <Button className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Button className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6">
               Join Community
             </Button>
           </div>
@@ -428,7 +580,7 @@ const Navigation = () => {
               <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
                 About
               </a>
-              <Button className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full">
+              <Button className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full font-semibold">
                 Join Community
               </Button>
             </div>

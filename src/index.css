@@ -110,10 +110,18 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Professional image overlays */
+.image-overlay {
+  background: linear-gradient(135deg,
+    oklch(0.35 0.12 235 / 0.8) 0%,
+    oklch(0.65 0.15 45 / 0.6) 100%);
+}
+
+/* Enhanced card hover effects */
 .card-hover:hover {
-  transform: translateY(-4px) scale(1.01); /* More subtle for institutional feel */
-  box-shadow: 0 12px 24px oklch(0.35 0.12 235 / 0.1),
-              0 0 15px oklch(0.65 0.15 45 / 0.05);
+  transform: translateY(-8px) scale(1.02); /* More pronounced for better feedback */
+  box-shadow: 0 20px 40px oklch(0.35 0.12 235 / 0.15),
+              0 0 20px oklch(0.65 0.15 45 / 0.1);
 }
 
 .text-gradient {
@@ -125,9 +133,17 @@ body {
   background-clip: text;
 }
 
+/* Enhanced CTA button styles */
 .btn-glow {
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 12px oklch(0.35 0.12 235 / 0.25);
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 6px 20px oklch(0.35 0.12 235 / 0.4);
+  transform: translateY(-1px);
 }
 
 .btn-glow::before {
