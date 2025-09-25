@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Quick Disable Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .repo-link { display: block; margin: 10px 0; padding: 10px; background: #f6f8fa; border-radius: 6px; text-decoration: none; color: #0366d6; }
+        .repo-link:hover { background: #e1e4e8; }
+        .bookmarklet { background: #28a745; color: white; padding: 10px; border-radius: 4px; cursor: pointer; display: inline-block; margin: 10px 0; }
+        .priority { background: #ffeaa7; padding: 15px; border-radius: 6px; margin: 20px 0; }
+        .success { background: #d4edda; padding: 15px; border-radius: 6px; margin: 20px 0; color: #155724; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 GitHub Pages Quick Disable Tool</h1>
+        
+        <div class="priority">
+            <h2>⚡ PRIORITY ACTION</h2>
+            <p><strong>First, enable Pages for your current repository:</strong></p>
+            <a href="https://github.com/renbran/scholarix-global-3d/settings/pages" target="_blank" class="repo-link">
+                🎯 Enable Pages: scholarix-global-3d/settings/pages
+            </a>
+            <p>Set Source to <strong>"GitHub Actions"</strong> and Save.</p>
+        </div>
+
+        <h2>📝 Step-by-Step Process</h2>
+        <ol>
+            <li><strong>Click each link below</strong> (opens in new tab)</li>
+            <li><strong>Set Source to "None"</strong> for each repository</li>
+            <li><strong>Click "Save"</strong></li>
+            <li><strong>Move to next repository</strong></li>
+        </ol>
+
+        <div class="bookmarklet" onclick="copyBookmarklet()">
+            📖 Click to copy quick-access bookmarklet
+        </div>
+
+        <h2>🎯 Repositories to Disable</h2>
+        <p>Click each link to open the Pages settings. Set Source to "None" and Save:</p>
+
+        <a href="https://github.com/renbran/renbran.github.io/settings/pages" target="_blank" class="repo-link">
+            🔗 renbran.github.io (Main Profile Site)
+        </a>
+
+        <a href="https://github.com/renbran/portfolio/settings/pages" target="_blank" class="repo-link">
+            🔗 portfolio
+        </a>
+
+        <a href="https://github.com/renbran/website/settings/pages" target="_blank" class="repo-link">
+            🔗 website
+        </a>
+
+        <a href="https://github.com/renbran/blog/settings/pages" target="_blank" class="repo-link">
+            🔗 blog
+        </a>
+
+        <a href="https://github.com/renbran/docs/settings/pages" target="_blank" class="repo-link">
+            🔗 docs
+        </a>
+
+        <a href="https://github.com/renbran/landing-page/settings/pages" target="_blank" class="repo-link">
+            🔗 landing-page
+        </a>
+
+        <a href="https://github.com/renbran/react-app/settings/pages" target="_blank" class="repo-link">
+            🔗 react-app
+        </a>
+
+        <a href="https://github.com/renbran/vue-app/settings/pages" target="_blank" class="repo-link">
+            🔗 vue-app
+        </a>
+
+        <a href="https://github.com/renbran/static-site/settings/pages" target="_blank" class="repo-link">
+            🔗 static-site
+        </a>
+
+        <a href="https://github.com/renbran/homepage/settings/pages" target="_blank" class="repo-link">
+            🔗 homepage
+        </a>
+
+        <div class="success">
+            <h3>✅ After Disabling All Others</h3>
+            <p><strong>Expected Result:</strong></p>
+            <ul>
+                <li>Your site will deploy at: <a href="https://renbran.github.io/scholarix-global-3d/" target="_blank">https://renbran.github.io/scholarix-global-3d/</a></li>
+                <li>Check deployment status: <a href="https://github.com/renbran/scholarix-global-3d/actions" target="_blank">Actions Tab</a></li>
+                <li>Deployment time: 2-3 minutes</li>
+            </ul>
+        </div>
+
+        <h2>🔍 How to Check Which Sites Are Active</h2>
+        <ol>
+            <li>Go to: <a href="https://github.com/renbran?tab=repositories" target="_blank">Your Repositories</a></li>
+            <li>Look for 🌐 icon next to repository names</li>
+            <li>Those are your active GitHub Pages sites</li>
+        </ol>
+    </div>
+
+    <script>
+        function copyBookmarklet() {
+            const bookmarklet = "javascript:(function(){var repo=prompt('Repository name (without renbran/):','');if(repo){window.open('https://github.com/renbran/'+repo+'/settings/pages');}})()";
+            navigator.clipboard.writeText(bookmarklet).then(() => {
+                alert('Bookmarklet copied! Save it as a bookmark for quick access to any repository Pages settings.');
+            });
+        }
+    </script>
+</body>
+</html>
