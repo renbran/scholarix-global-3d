@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Quick Setup Guide for Remote GitHub Pages Disable
+echo "🔧 Quick Setup for Remote GitHub Pages Management"
+echo "================================================="
+echo ""
+
+echo "Since GitHub CLI is not installed, we'll use the Personal Access Token method:"
+echo ""
+
+echo "📋 Step 1: Create a Personal Access Token"
+echo "=========================================="
+echo "1. Go to: https://github.com/settings/tokens"
+echo "2. Click 'Generate new token (classic)'"
+echo "3. Name it: 'GitHub Pages Management'"
+echo "4. Select these permissions:"
+echo "   ✅ repo (Full control of private repositories)"
+echo "   ✅ delete_repo (Delete repositories)"
+echo "5. Click 'Generate token'"
+echo "6. COPY THE TOKEN (you won't see it again!)"
+echo ""
+
+echo "🚀 Step 2: Run the Remote Disable Script"
+echo "========================================="
+echo "Replace 'your_token_here' with your actual token:"
+echo ""
+echo "GITHUB_TOKEN=your_token_here ./disable-pages-api.sh"
+echo ""
+
+echo "💡 Alternative: Set token as environment variable"
+echo "================================================="
+echo "export GITHUB_TOKEN=your_token_here"
+echo "./disable-pages-api.sh"
+echo ""
+
+echo "⚡ What the script will do:"
+echo "=========================="
+echo "✅ Automatically disable Pages for common repo names:"
+echo "   - portfolio, website, blog, docs, landing-page"
+echo "   - renbran.github.io, personal-site, homepage"
+echo "   - cv, resume, projects, demo, showcase"
+echo "   - react-app, vue-app, angular-app, static-site"
+echo ""
+echo "✅ Enable Pages for scholarix-global-3d"
+echo "✅ Set up GitHub Actions deployment"
+echo "✅ Provide deployment verification links"
+echo ""
+
+echo "🔍 Expected Results:"
+echo "==================="
+echo "Site URL: https://renbran.github.io/scholarix-global-3d/"
+echo "Deploy time: 2-3 minutes after enabling"
+echo ""
+
+echo "🛠️  Ready to run? Execute this command:"
+echo "========================================"
+echo "GITHUB_TOKEN=your_token_here ./disable-pages-api.sh"
