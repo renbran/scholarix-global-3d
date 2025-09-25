@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { useKV } from '@github/spark/hooks'
+import { ProgramFinder } from '@/components/ProgramFinder'
 
 const FloatingElement = ({ children, delay = 0, className = "" }) => (
   <motion.div
@@ -536,6 +537,9 @@ const Navigation = () => {
             <a href="#programs" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
               Programs
             </a>
+            <a href="#program-finder" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+              Program Finder
+            </a>
             <a href="#community" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
               Community
             </a>
@@ -570,6 +574,9 @@ const Navigation = () => {
             <div className="flex flex-col gap-4 pt-4">
               <a href="#programs" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
                 Programs
+              </a>
+              <a href="#program-finder" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+                Program Finder
               </a>
               <a href="#community" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
                 Community
@@ -649,6 +656,7 @@ function App() {
       <Navigation />
       <HeroSection />
       <ServicesSection />
+      <ProgramFinder />
       <TimelineSection />
       <StatsSection />
       <Footer />
