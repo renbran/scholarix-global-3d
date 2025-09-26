@@ -6,6 +6,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { useKV } from '@github/spark/hooks'
 import { ProgramFinder } from '@/components/ProgramFinder'
+import { InteractiveGlobe } from '@/components/InteractiveGlobe'
+import { CampusVisualization } from '@/components/CampusVisualization'
+import { Enhanced3DHeroSection } from '@/components/FloatingElements3D'
+import { StudentJourneyPath } from '@/components/StudentJourneyPath'
 
 const FloatingElement = ({ children, delay = 0, className = "" }) => (
   <motion.div
@@ -525,9 +529,11 @@ const Navigation = () => {
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <GraduationCap size={24} className="text-primary-foreground" weight="bold" />
-            </div>
+            <img
+              src="/scholarix-logo.svg"
+              alt="Scholarix Study Abroad Logo"
+              className="w-12 h-12 object-contain"
+            />
             <div className="text-xl font-bold academic-heading text-foreground">
               Scholarix Study Abroad
             </div>
@@ -537,14 +543,17 @@ const Navigation = () => {
             <a href="#programs" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
               Programs
             </a>
-            <a href="#program-finder" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
-              Program Finder
+            <a href="#globe" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+              🌍 Explore Globe
+            </a>
+            <a href="#campus" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+              🏛️ Campus 3D
+            </a>
+            <a href="#journey" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+              🗺️ Journey Path
             </a>
             <a href="#community" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
               Community
-            </a>
-            <a href="#success-stories" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
-              Success Stories
             </a>
             <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
               About
@@ -575,14 +584,20 @@ const Navigation = () => {
               <a href="#programs" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
                 Programs
               </a>
+              <a href="#globe" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+                🌍 Explore Globe
+              </a>
+              <a href="#campus" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+                🏛️ Campus 3D
+              </a>
+              <a href="#journey" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+                🗺️ Journey Path
+              </a>
               <a href="#program-finder" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
                 Program Finder
               </a>
               <a href="#community" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
                 Community
-              </a>
-              <a href="#success-stories" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
-                Success Stories
               </a>
               <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
                 About
@@ -604,9 +619,11 @@ const Footer = () => (
       <div className="grid md:grid-cols-4 gap-8 mb-8">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <GraduationCap size={24} className="text-primary-foreground" weight="bold" />
-            </div>
+            <img
+              src="/scholarix-logo.svg"
+              alt="Scholarix Study Abroad Logo"
+              className="w-12 h-12 object-contain"
+            />
             <div className="text-xl font-bold academic-heading text-foreground">
               Scholarix Study Abroad
             </div>
@@ -654,10 +671,25 @@ function App() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <HeroSection />
-      <ServicesSection />
-      <ProgramFinder />
-      <TimelineSection />
+      <Enhanced3DHeroSection />
+      <div id="programs">
+        <ServicesSection />
+      </div>
+      <div id="globe">
+        <InteractiveGlobe />
+      </div>
+      <div id="campus">
+        <CampusVisualization />
+      </div>
+      <div id="program-finder">
+        <ProgramFinder />
+      </div>
+      <div id="journey">
+        <StudentJourneyPath />
+      </div>
+      <div id="community">
+        <TimelineSection />
+      </div>
       <StatsSection />
       <Footer />
     </div>
